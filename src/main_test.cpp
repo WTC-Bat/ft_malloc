@@ -1,22 +1,16 @@
-#include <iostream>
-
-#include <stdio.h>
-
-// getpagesize()
-#include <unistd.h>
-
-// mmap(), munmap()
-#include <sys/mman.h>
-
-// getrlimit()
-#include <sys/time.h>
-#include <sys/resource.h>
+#include "ft_malloc.hpp"
 
 int     main(void)
 {
     int     pgsz = getpagesize();
+    void    *frtst = NULL;
+    size_t  sztst = 42;
 
-    // printf("%d", pgsz);
+    printf("%d\n", pgsz);
+
+    ft_malloc(sztst);
+    ft_realloc(frtst, sztst);
+    ft_free(&frtst);
 
     return (0);
 }

@@ -2,7 +2,7 @@ NAME = libft_malloc_$HOSTTYPE.so
 SLNK = ln -s libft_malloc_$HOSTTYPE.so libft_malloc.so
 SRCD = ./src/
 HEADD = ./include/
-SRCS = $(SRC)*.cpp
+SRCS = $(SRCD)*.cpp
 #etc
 
 ### Checks if the "HOSTTYPE" environment variable  exists
@@ -15,5 +15,10 @@ ifeq ($(HOSTTYPE),)
 	HOSTTYPE := $(shell uname -m)_$(shell uname -s)
 endif
 
-# all:
-# 	@echo $(HOSTTYPE)
+all: $(NAME)
+
+$(NAME):
+	clang++ -Wall -Werror -Wextra $(SRCS) -I$(HEADD)
+
+tst:
+	clang++ $(SRCS) -I$(HEADD)
